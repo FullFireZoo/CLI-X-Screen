@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer")
 
 
-function screen (lien, name){
+export function screen (lien, name){
 const getScreenshot = async () => {
 //const browser = await puppeteer.launch({ headless: false })
   const browser = await puppeteer.launch()
