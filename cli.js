@@ -16,7 +16,7 @@ inquirer.prompt([
     },
     {
         type:'input',
-        message:"Dans quel dossier veux-tu mettre ton screen ?",
+        message:`Dans quel dossier veux-tu mettre ton screen ? \n(exemple : /Users/admin/Downloads) `,
         name:'root'
     },
     {
