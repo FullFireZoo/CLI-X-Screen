@@ -1,8 +1,6 @@
 const inquirer = require('inquirer')
-/* It's importing the function `screen` from the file `screenshot.js` */
-// const screen = require("./screenshot.js")
-const puppeteer = require("puppeteer");
-
+const {screen} = require("./screenshot")
+console.log(screen)
 
 
 inquirer.prompt([
@@ -13,8 +11,13 @@ inquirer.prompt([
     },
     {
         type:'input',
-        message:"quel est le nom du screen (n'oublie pas le .png) ?",
+        message:"quel est le nom du screen ?",
         name:'nom'
+    },
+    {
+        type:'input',
+        message:"Dans quel dossier veux-tu mettre ton screen ?",
+        name:'root'
     },
     {
         type:'confirm',
@@ -24,18 +27,5 @@ inquirer.prompt([
     }
 ]).then(answer => {
     console.log(`Vous avez fait screen de ${answer.lien} est le screen s'appelle ${answer.nom}...`)
-
-    function screen(lien,nom) {
-        const getScreenshot = async () => {
-          //const browser = await puppeteer.launch({ headless: false })
-          const browser = await puppeteer.launch();
-          const page = await browser.newPage();
-          await page.goto(lien,);
-          await page.setViewport({ width: 1400, height: 900 });
-          await page.screenshot({ path:nom });
-          await browser.close();
-        };
-        getScreenshot();
-      }
-      screen(answer.lien, answer.nom)
+      screen(answer.lien, answer.nom, answer.root)
 })
